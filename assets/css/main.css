@@ -61,12 +61,31 @@ body {
 
 
 .recipe-image {
-    width: 100%;
+    width: 100px;
     height: auto;
-    margin-bottom: 1em;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 5px;
 }
 
+article.post {
+    position: relative; /* Enable absolute positioning of child elements */
+    padding-top: 20px;
+}
 
+@media (max-width: 768px) {
+    .recipe-image {
+        width: 70px; /* Reduce size for smaller screens */
+        top: auto;  /* Reposition to avoid overlapping the title */
+        bottom: 10px; /* Place image at the bottom-right instead */
+        right: 10px;
+    }
+    
+    .box.post {
+        padding-top: 20px; /* Add padding if needed to prevent content shifting */
+    }
+}
 
 
 

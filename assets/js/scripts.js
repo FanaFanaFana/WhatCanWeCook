@@ -31,9 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Sort recipes by match percentage (highest first) and then by the number of ingredients (lowest first)
                 filteredData.sort((a, b) => {
-                    // Primary sort by matchPercentage (highest first)
                     if (b.matchPercentage !== a.matchPercentage) return b.matchPercentage - a.matchPercentage;
-                    // Secondary sort by the number of ingredients (to prioritize recipes with fewer ingredients if matchPercentage is the same)
                     return a.totalIngredients - b.totalIngredients;
                 });
 
@@ -61,6 +59,7 @@ function displayResults(data, ingredients) {
 
         const article = document.createElement("article");
         article.classList.add("box", "post");
+        article.style.position = "relative"; // Enable absolute positioning for the image
 
         // Highlight matched ingredients and show missing ones
         const highlightedIngredients = recipe.ingredients.map(ingredient => {
@@ -83,8 +82,8 @@ function displayResults(data, ingredients) {
             .replace(/\./g, ".<br>")
             .replace(/<br><br>/g, "<br>");
 
-        // Add a small image if available
-        const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image" style="width: 150px; height: auto; float: left; margin-right: 10px;">` : "";
+        // Add a small image in the top-right corner if available
+        const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image" style="width: 100px; height: auto; position: absolute; top: 10px; right: 10px;">` : "";
 
         article.innerHTML = `
             <header><h2>${recipe.name}</h2></header>
