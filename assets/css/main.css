@@ -60,6 +60,14 @@ body {
 }
 
 
+
+
+article.post {
+    position: relative; /* Enable absolute positioning of child elements */
+    padding-top: 20px;
+}
+
+/* Base styling for desktop */
 .recipe-image {
     width: 100px;
     height: auto;
@@ -69,24 +77,21 @@ body {
     border-radius: 5px;
 }
 
-article.post {
-    position: relative; /* Enable absolute positioning of child elements */
-    padding-top: 20px;
-}
-
-@media (max-width: 768px) {
-    .recipe-image {
-        width: 70px; /* Reduce size for smaller screens */
-        top: auto;  /* Reposition to avoid overlapping the title */
-        bottom: 10px; /* Place image at the bottom-right instead */
-        right: 10px;
+/* Mobile adjustments */
+@media (max-width: 700px) {
+    .mobile-view-image {
+        position: static;
+        display: block;
+        margin: 10px auto; /* Center the image */
+        width: 80%; /* Make image more responsive on mobile */
+        max-width: 200px;
     }
-    
+
     .box.post {
-        padding-top: 20px; /* Add padding if needed to prevent content shifting */
+        padding-top: 20px;
+        text-align: center; /* Center-align content for a cleaner mobile look */
     }
 }
-
 
 
 ol, ul {

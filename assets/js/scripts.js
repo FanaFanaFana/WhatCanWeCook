@@ -59,7 +59,6 @@ function displayResults(data, ingredients) {
 
         const article = document.createElement("article");
         article.classList.add("box", "post");
-        article.style.position = "relative"; // Enable absolute positioning for the image
 
         // Highlight matched ingredients and show missing ones
         const highlightedIngredients = recipe.ingredients.map(ingredient => {
@@ -82,8 +81,8 @@ function displayResults(data, ingredients) {
             .replace(/\./g, ".<br>")
             .replace(/<br><br>/g, "<br>");
 
-        // Add a small image in the top-right corner if available
-        const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image" style="width: 100px; height: auto; position: absolute; top: 10px; right: 10px;">` : "";
+        // Insert the image directly after the header
+        const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image mobile-view-image">` : "";
 
         article.innerHTML = `
             <header><h2>${recipe.name}</h2></header>
