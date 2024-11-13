@@ -85,7 +85,7 @@ function displayResults(data, ingredients) {
         const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image mobile-view-image">` : "";
 
         article.innerHTML = `
-            <header><h2>${recipe.name}</h2></header>
+            <header><h2><b>${recipe.name}</b></h2></header><br>
             ${imageTag}
             <p><strong>Ingredients:</strong></p>
             <ul>${highlightedIngredients}</ul>
