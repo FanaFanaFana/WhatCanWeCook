@@ -34,7 +34,10 @@ body {
 	
 }
 
-
+.full-width {
+	width: 100%;
+	}
+	
 /* Adjust the container to align items on small screens */
 @media (max-width: 768px) {
     .input-container {
