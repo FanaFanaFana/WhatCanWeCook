@@ -35,12 +35,22 @@ body {
 }
 
 
-@media (max-width: 600px) {
-    .search-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
+/* Adjust the container to align items on small screens */
+@media (max-width: 768px) {
+    .input-container {
+        flex-direction: column; /* Stack input and button vertically */
+        align-items: center;
     }
+
+    #filterInput {
+        margin-bottom: 10px; /* Add spacing below input on small screens */
+    }
+
+    #filterButton {
+        width: 100%; /* Full width button on mobile */
+        font-size: 18px; /* Smaller font size for mobile readability */
+    }
+}
 
 
 
