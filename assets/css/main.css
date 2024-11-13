@@ -60,6 +60,14 @@ body {
 }
 
 
+.recipe-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+
+
 
 
 ol, ul {
