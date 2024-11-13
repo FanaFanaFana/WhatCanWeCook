@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezept-Formular</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 1em;
+        }
+        .output {
+            background-color: #f4f4f4;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rezept-Formular</h1>
+    <form id="recipeForm">
+        <label for="name">Rezeptname:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="ingredients">Zutaten (eine Zutat pro Zeile):</label>
+        <textarea id="ingredients" name="ingredients" rows="5" required></textarea>
+
+        <label for="preparation">Zubereitungsschritte:</label>
+        <textarea id="preparation" name="preparation" rows="8" required></textarea>
+
+        <label for="image">Bild-URL:</label>
+        <input type="text" id="image" name="image" placeholder="Optional">
+
+        <button type="button" onclick="generateJSON()">JSON erzeugen</button>
+    </form>
+
+    <div class="output" id="output"></div>
+
+    <script>
+        function generateJSON() {
+            const name = document.getElementById("name").value;
+            const ingredients = document.getElementById("ingredients").value
+                .split("\n")
+                .map(ingredient => ingredient.trim())
+                .filter(ingredient => ingredient.length > 0);
+            const preparation = document.getElementById("preparation").value;
+            const image = document.getElementById("image").value;
+
+            const recipeJSON = {
+                name: name,
+                ingredients: ingredients,
+                preparation: preparation,
+                image: image || null
+            };
+
+            document.getElementById("output").innerHTML = `<h2>Rezept JSON:</h2><pre>${JSON.stringify(recipeJSON, null, 2)}</pre>`;
+        }
+    </script>
+
+</body>
+</html>

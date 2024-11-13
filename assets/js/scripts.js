@@ -60,7 +60,7 @@ function displayResults(data, ingredients) {
         return;
     }
 
-    data.forEach(item => {
+    data.forEach((item, index) => {
         const recipe = item.recipe;
         const matchPercentage = item.matchPercentage;
         const missingIngredients = item.missingIngredients;
@@ -84,10 +84,14 @@ function displayResults(data, ingredients) {
         const missingList = ingredients.filter(ing => !recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(ing)))
             .map(ingredient => `<span class="missing">X ${ingredient}</span>`).join(", ");
 
-        // Format preparation steps with line breaks for readability
-        const formattedPreparation = recipe.preparation
-            .replace(/\./g, ".<br>")
-            .replace(/<br><br>/g, "<br>");
+        // Preparation steps initially hidden in a container
+        const preparationId = `preparation-${index}`; // Unique ID for each preparation section
+        const preparationContainer = `
+            <button onclick="togglePreparation('${preparationId}')">Show Preparation</button>
+            <div id="${preparationId}" style="display: none; margin-top: 25px;">
+                ${recipe.preparation.replace(/\./g, ".<br>").replace(/<br><br>/g, "<br>")}
+            </div>
+        `;
 
         // Insert the image directly after the header
         const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image mobile-view-image">` : "";
@@ -99,8 +103,17 @@ function displayResults(data, ingredients) {
             <ul>${highlightedIngredients}</ul>
             <p><strong>Not needed:</strong> ${missingList}</p>
             <p><strong>Match Percentage:</strong> ${matchPercentage.toFixed(2)}%</p>
-            <p><strong>Preparation:</strong><br>${formattedPreparation}</p>
+            
+            ${preparationContainer}
         `;
         container.appendChild(article);
     });
 }
+
+// JavaScript function to toggle visibility of preparation steps
+function togglePreparation(preparationId) {
+    const preparationDiv = document.getElementById(preparationId);
+    const isHidden = preparationDiv.style.display === "none";
+    preparationDiv.style.display = isHidden ? "block" : "none";
+}
+

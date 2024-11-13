@@ -186,6 +186,29 @@
 
 
   {
+    "name": "pizza sauce à la doktor",
+    "ingredients": [
+      "1 can of tomatoes (whole or chopped)",
+      "1 onion",
+      "5 cloves of garlic",
+      "3 cloves",
+      "2 bay leaves",
+      "1 dried chili pepper",
+      "1 handful of oregano",
+      "A splash of balsamic vinegar",
+      "A pinch of nutmeg",
+      "2 tablespoons of olive oil",
+      "salt",
+      "pepper"
+    ],
+    "preparation": "First, finely chop the onion and sauté it in a bit of olive oil until caramelized but not burned. Briefly add the garlic and pepper everything in the pan.\nNext, add the balsamic vinegar and bring to a boil. Now add the can of tomatoes and let it simmer for a short while. Meanwhile, add oregano, nutmeg, chili, and cloves.\nAfter about 5 minutes, blend the sauce until it becomes creamy, then return it to the pot to continue cooking. Now add bay leaves and let it cook for a while. The sauce can be used immediately, but it reaches its full flavor after an hour on low heat.\n\nThen, pour the hot sauce into a canning jar and store it in the refrigerator.",
+    "image": "images/sossendoktor.jpg"
+
+  },
+
+
+
+  {
     "name": "Foot",
     "ingredients": [
       "Foot"

@@ -1,0 +1,159 @@
+{
+    "launchUrl": "https://www.webtonative.com/api/v1/demo/handleDemoRedirection?requestId=xZKRZPYtzGumoDPbDlvN&expiryTime=2024-11-24",
+    "stickyFooter": {
+        "enable": false
+    },
+    "biometricAuth": {
+        "enable": false
+    },
+    "socialLogin": {
+        "enable": false
+    },
+    "openLinkInSameWebview": true,
+    "enableInAppPurchase": false,
+    "appsflyer": {
+        "enable": false
+    },
+    "enableFBAppEvents": false,
+    "enableFirebaseEvents": false,
+    "enableFirebaseNotification": false,
+    "enableNativeContacts": false,
+    "enableHapticEffect": false,
+    "customUrlScheme": "",
+    "enableBackgroundLocation": false,
+    "keepScreenOn": false,
+    "enableInAppReview": false,
+    "requestTrackingConsentOnLoad": true,
+    "bannerAdUnitId": "",
+    "oneSignalSoftPrompt": false,
+    "enableBarcode": false,
+    "orientationType": "PORTRAIT",
+    "customUserAgent": {
+        "type": "APPEND",
+        "value": "w2n/iOS"
+    },
+    "enablePullToRefresh": false,
+    "pageNavigationLoader": false,
+    "oneSignalId": "",
+    "globalCssString": "",
+    "globalJsString": "",
+    "showTopSafeArea": true,
+    "statusBarColor": "#FFFFFF",
+    "showBottomSafeArea": false,
+    "safeAreaColor": "#FFFFFF",
+    "splashIconWidth": 200,
+    "splashIconHeight": 200,
+    "showSplashImage": false,
+    "splashWithAnimation": true,
+    "loopAnimation": false,
+    "splashBackgroundColor": "#ff725e",
+    "animationBGColor": "#000000",
+    "animationEndType": "onAnimationEnd",
+    "loopTimes": 0,
+    "enableLocalSetting": false,
+    "enableAppUpdatePopup": false,
+    "enableFullScreen": false,
+    "enableSiri": false,
+    "appId": "",
+    "regexInternalExternal": {
+        "rules": [
+            {
+                "type": "EXTERNAL",
+                "label": "Non-web links",
+                "regex": "^(?!https?://).*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "Facebook",
+                "regex": "https?://([-\\w]+\\.)*facebook\\.com.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "Twitter",
+                "regex": "https?://([-\\w]+\\.)*twitter\\.com/.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "Instagram",
+                "regex": "https?://([-\\w]+\\.)*instagram\\.com/.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "Google Maps",
+                "regex": "https?://maps\\.google\\.com.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "Google Maps Search",
+                "regex": "https?://([-\\w]+\\.)*google\\.com/maps/search/.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "LinkedIn",
+                "regex": "https?://([-\\w]+\\.)*linkedin\\.com/.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "EXTERNAL",
+                "label": "Whatsapp",
+                "regex": "https?://([-\\w]+\\.)*whatsapp\\.com/.*",
+                "pageType": "CUSTOM"
+            },
+            {
+                "type": "INTERNAL",
+                "label": "All Other Links",
+                "regex": ".*",
+                "pageType": "ALL_PAGES"
+            }
+        ]
+    },
+    "noInternetData": {
+        "pages": [
+            {
+                "topMarginPercent": 14,
+                "elements": [
+                    {
+                        "fileName": "no_internet.png",
+                        "fileUrl": "https://firebasestorage.googleapis.com/v0/b/web-to-native-dev.appspot.com/o/user-uploads%2FJnEsGYO67yYziwPpChL8%2Fuser-upload%2Ficon_ANDROID1699509452490.png?alt=media&token=4b7b7bfc-b832-4e70-b13a-cbb9d3788a09",
+                        "type": "image"
+                    },
+                    {
+                        "fontSize": 32,
+                        "type": "text",
+                        "value": "Oops!",
+                        "textColor": "#363942",
+                        "fontWeight": 700
+                    },
+                    {
+                        "fontSize": 14,
+                        "type": "text",
+                        "value": "Slow or No Internet Connection Please check your connection settings",
+                        "textColor": "#363942",
+                        "fontWeight": 400
+                    }
+                ]
+            }
+        ],
+        "bgColor": "#FFFFFF",
+        "actionButtons": [
+            {
+                "btnBgColor": "#363942",
+                "borderColor": "#363942",
+                "borderWidth": 4,
+                "text": "Try Again",
+                "roundedCornerPercent": 8,
+                "textColor": "#ffffff",
+                "url": "#"
+            }
+        ]
+    },
+    "onboarding": null,
+    "connectData": null,
+    "admobAds": null
+}
