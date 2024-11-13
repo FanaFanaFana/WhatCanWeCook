@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Function to display filtered recipes, including missing ingredients
+// Function to display filtered recipes, including missing ingredients and image
 function displayResults(data, ingredients) {
     const container = document.getElementById("resultsContainer");
     container.innerHTML = "";
@@ -72,7 +72,7 @@ function displayResults(data, ingredients) {
                 }
             });
             return `<li>${highlightedIngredient}</li>`;
-        }).join(""); // Join ingredients as list items
+        }).join("");
 
         // Show missing ingredients with an "X"
         const missingList = ingredients.filter(ing => !recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(ing)))
@@ -80,11 +80,15 @@ function displayResults(data, ingredients) {
 
         // Format preparation steps with line breaks for readability
         const formattedPreparation = recipe.preparation
-            .replace(/\./g, ".<br>") // Adds <br> after each period
-            .replace(/<br><br>/g, "<br>"); // Ensures only single <br> if consecutive periods
+            .replace(/\./g, ".<br>")
+            .replace(/<br><br>/g, "<br>");
+
+        // Add a small image if available
+        const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image" style="width: 150px; height: auto; float: left; margin-right: 10px;">` : "";
 
         article.innerHTML = `
             <header><h2>${recipe.name}</h2></header>
+            ${imageTag}
             <p><strong>Ingredients:</strong></p>
             <ul>${highlightedIngredients}</ul>
             <p><strong>Not needed:</strong> ${missingList}</p>
