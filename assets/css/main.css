@@ -35,6 +35,14 @@ body {
 }
 
 
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+
 
 
 
