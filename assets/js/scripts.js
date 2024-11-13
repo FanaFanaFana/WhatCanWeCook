@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Event listener for the filter button
     document.getElementById("filterButton").addEventListener("click", function () {
-        const ingredientsInput = document.getElementById("filterInput").value.toLowerCase();
+        const ingredientsInput = document.getElementById("filterInput").value.toLowerCase().trim();
+        
+        // Check if input is empty; if so, clear the results and stop further processing
+        if (ingredientsInput === "") {
+            const container = document.getElementById("resultsContainer");
+            container.innerHTML = "<h1>Please enter ingredients to search for recipes.</h1>";
+            return;
+        }
+
         const ingredients = ingredientsInput.split(",").map(ing => ing.trim());
 
         // AJAX request to load JSON data
