@@ -2066,14 +2066,13 @@ article p strong {
 		background-image: url("/images/bg.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
-		opacity: 0.7; /* Adjust this value for desired opacity */
+		opacity: 0.3; /* Adjust this value for desired opacity */
 		z-index: -1; /* Position the pseudo-element behind other content */
 	}
 
 		#header > .container {
 			padding: 14em 0 7em 0;
-			border-bottom: solid px #e5e5e5;
-			box-shadow: inset 0px -8px 0px 0px #fff, inset 0px -10px 0px 0px #e5e5e5;
+			
 		}
 
 		#header h1 {
