@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Event listener for the filter button
-    document.getElementById("filterButton").addEventListener("click", function () {
-        const ingredientsInput = document.getElementById("filterInput").value.toLowerCase().trim();
+    const filterInput = document.getElementById("filterInput");
+    const filterButton = document.getElementById("filterButton");
+
+    // Function to handle the search functionality
+    function handleSearch() {
+        const ingredientsInput = filterInput.value.toLowerCase().trim();
 
         // Check if input is empty or only contains commas or periods
         if (ingredientsInput === "" || /^[,.]+$/.test(ingredientsInput)) {
@@ -47,8 +50,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 displayResults(filteredData, ingredients);
             })
             .catch(error => console.error("Error loading JSON:", error));
+    }
+
+    // Event listener for the filter button
+    filterButton.addEventListener("click", handleSearch);
+
+    // Event listener for Enter key on the input field
+    filterInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
     });
 });
+
 
 // Function to display filtered recipes, including missing ingredients and image
 function displayResults(data, ingredients) {
