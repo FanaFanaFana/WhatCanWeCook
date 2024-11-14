@@ -2079,10 +2079,10 @@ article p strong {
 		#header h1 {
 			font-family: 'Arvo';
 			font-weight: 700;
-			color: #c28536;
+			color: #302d2d;
 			text-shadow: 0.05em 0.075em 0 rgba(0, 0, 0, 0.1);
-			font-size: 3em;
-			letter-spacing: 13px;
+			font-size: 4em;
+			letter-spacing: 10px;
 		}
 
 		#myimage {
@@ -2096,9 +2096,9 @@ article p strong {
 		#header p {
 			text-transform: uppercase;
 			font-weight: 400;
-			color: #6e695d;
+			color: #2e2e2d;
 			margin: 2.5em 0 0 0;
-			font-size: 0.85em;
+			font-size: 1.4em;
 			letter-spacing: 3px;
 			text-align: center;
 		}
@@ -2126,8 +2126,8 @@ article p strong {
 				border: 1;
 				text-decoration: none;
 				text-transform: uppercase;
-				font-weight: 400;
-				color: #777;
+				font-weight: 500;
+				color: #363535;
 				outline: 0;
 				display: block;
 			}
