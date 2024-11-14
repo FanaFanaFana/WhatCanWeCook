@@ -2054,6 +2054,8 @@ article p strong {
 		/*background: #fff;*/
 		text-align: center;
 		background-image: url("/images/bg.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 
 		#header > .container {
