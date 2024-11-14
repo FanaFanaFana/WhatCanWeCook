@@ -74,15 +74,21 @@ function displayResults(data, ingredients) {
         return;
     }
 
+    const displayedNames = new Set(); // Track displayed recipe names to avoid duplicates
+
     data.forEach((item, index) => {
         const recipe = item.recipe;
         const matchPercentage = item.matchPercentage;
         const missingIngredients = item.missingIngredients;
 
+        // Skip if this recipe name has already been displayed
+        if (displayedNames.has(recipe.name)) return;
+        displayedNames.add(recipe.name); // Add to set to mark as displayed
+
         const article = document.createElement("article");
         article.classList.add("box", "post");
 
-        // Highlight matched ingredients and show missing ones
+        // Highlight matched ingredients and make each clickable
         const highlightedIngredients = recipe.ingredients.map(ingredient => {
             let highlightedIngredient = ingredient;
             ingredients.forEach(ing => {
@@ -91,7 +97,8 @@ function displayResults(data, ingredients) {
                     highlightedIngredient = highlightedIngredient.replace(regex, `<span class="highlight">$1</span>`);
                 }
             });
-            return `<li>${highlightedIngredient}</li>`;
+            // Make ingredient clickable
+            return `<li><span class="clickable-ingredient" onclick="addIngredientToSearch('${ingredient}')">${highlightedIngredient}</span></li>`;
         }).join("");
 
         // Show missing ingredients with an "X"
@@ -102,7 +109,7 @@ function displayResults(data, ingredients) {
         const preparationId = `preparation-${index}`; // Unique ID for each preparation section
         const preparationContainer = `
             <button onclick="togglePreparation('${preparationId}')">Show Preparation</button>
-            <div id="${preparationId}" style="display: none; margin-top: 25px; ">
+            <div id="${preparationId}" style="display: none; margin-top: 25px;">
                 ${recipe.preparation.replace(/\./g, ".<br>").replace(/<br><br>/g, "<br>")}
             </div>
         `;
@@ -122,6 +129,18 @@ function displayResults(data, ingredients) {
         `;
         container.appendChild(article);
     });
+}
+
+// JavaScript function to add an ingredient to the search bar if it's not already there
+function addIngredientToSearch(ingredient) {
+    const filterInput = document.getElementById("filterInput");
+    const currentIngredients = filterInput.value.toLowerCase().split(",").map(ing => ing.trim());
+
+    // Add the ingredient if it's not already in the search bar
+    if (!currentIngredients.includes(ingredient.toLowerCase())) {
+        currentIngredients.push(ingredient);
+        filterInput.value = currentIngredients.join(", ");
+    }
 }
 
 // JavaScript function to toggle visibility of preparation steps
