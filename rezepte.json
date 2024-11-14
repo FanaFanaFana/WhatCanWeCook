@@ -600,6 +600,7 @@
    "image": "https://www.themealdb.com/images/media/meals/qywups1511796761.jpg"
   },
   {
+    "id": "43795",
     "name": "Tiramisu",
     "ingredients": [
       "3 eggs",
@@ -615,6 +616,7 @@
     "image": "https://baristaroyal.de/cdn/shop/articles/15-834476.png?v=1719300440&width=1000"
   },
   {
+    "id": "40795",
     "name": "pizza sauce à la doktor",
     "ingredients": [
       "1 can of tomatoes (whole or chopped)",
@@ -635,6 +637,7 @@
 
   },
   {
+    "id": "41795",
     "name": "Spaghetti Bolognese",
     "ingredients": [
         "3 tbsp olive oil",
@@ -654,6 +657,7 @@
     "image": "images/spaghetti.jpg"
 },
   {
+    "id": "42795",
     "name": "Eggplant rice ",
     "ingredients": [
       "2 Eggplants",
