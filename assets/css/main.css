@@ -55,33 +55,39 @@ body {
         margin-bottom: 10px;
         padding: 16px !important; /* Force padding to apply */
         font-size: 20px !important; /* Force font size to apply */
+        height: auto !important; /* Allow automatic height adjustment */
+        max-height: 150px; /* Limit maximum height */
+        resize: vertical; /* Enable vertical resizing */
+        overflow-y: auto; /* Add scrolling if text exceeds max height */
+        box-sizing: border-box;
     }
 
     #filterButton {
         width: 100%;
         font-size: 18px !important;
         padding: 12px !important; /* Force padding to apply */
-		margin-left: 6px;
+        margin-left: 0px;
     }
 }
 
+/* Styles for input and button on larger screens */
 #filterInput {
-	padding: 6px !important;  /* Reduce padding to make input field shorter */
-	font-size: 20px !important; /* Reduce font size */
-	line-height: normal !important; /* Remove any inherited line-height that could be increasing height */
-	border-radius: 5px; /* Keep slight rounding */
-	width: 100%; /* Ensure it stays responsive within container */
-	height: 50px !important;
-	box-sizing: border-box; /* Ensures padding doesn’t increase height */
+    padding: 6px !important; /* Reduce padding to make input field shorter */
+    font-size: 20px !important; /* Set font size */
+    line-height: normal !important; /* Normalize line-height */
+    border-radius: 5px; /* Keep slight rounding */
+    width: 100%; /* Ensure full width responsiveness */
+    height: 50px !important;
+    resize: vertical; /* Enable vertical resizing */
+    box-sizing: border-box; /* Ensures padding doesn’t increase height */
 }
 
 #filterButton {
-	width: 100% !important;
-	font-size: 18px !important;
-	padding: 12px !important; /* Force padding to apply */
-	margin-left: 6px;
+    width: 100% !important;
+    font-size: 18px !important;
+    padding: 12px !important; /* Force padding to apply */
+    margin-left: 6px;
 }
-
 
 
 
