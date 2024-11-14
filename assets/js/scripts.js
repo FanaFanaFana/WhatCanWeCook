@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
     const filterInput = document.getElementById("filterInput");
     const filterButton = document.getElementById("filterButton");
+    let cachedData = null; // Cache JSON data after the first fetch
+
+    // Debounce function to improve performance by delaying repeated calls
+    const debounce = (func, delay) => {
+        let debounceTimer;
+        return function (...args) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => func.apply(this, args), delay);
+        };
+    };
 
     // Function to handle the search functionality
-    function handleSearch() {
+    const handleSearch = debounce(function () {
         const ingredientsInput = filterInput.value.toLowerCase().trim();
 
         // Check if input is empty or only contains commas or periods
@@ -14,11 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const ingredients = ingredientsInput.split(",").map(ing => ing.trim());
+        filterButton.disabled = true; // Disable button during processing
 
-        // AJAX request to load JSON data
-        fetch("rezepte.json")
-            .then(response => response.json())
+        // Load JSON data from cache or fetch if not cached
+        (cachedData ? Promise.resolve(cachedData) : fetch("rezepte.json").then(response => response.json()))
             .then(data => {
+                if (!cachedData) cachedData = data; // Cache the data if not cached
+
                 // Process each recipe to calculate match percentage and track missing ingredients
                 const processedData = data.rezepte.map(recipe => {
                     const missingIngredients = [];
@@ -34,25 +46,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Calculate the match percentage
                     const matchPercentage = (matchCount / totalIngredients) * 100;
 
-                    return { recipe, matchPercentage, missingIngredients, totalIngredients }; // Include match percentage info
+                    return { recipe, matchPercentage, missingIngredients, totalIngredients };
                 });
 
                 // Filter out recipes with no matches at all
                 const filteredData = processedData.filter(item => item.matchPercentage > 0);
 
-                // Sort recipes by match percentage (highest first), then by the number of ingredients (lowest first),
-                // and randomize the order of recipes with the same match percentage.
+                // Sort recipes by match percentage, then by the number of ingredients, and randomize recipes with the same match percentage
                 filteredData.sort((a, b) => {
                     if (b.matchPercentage !== a.matchPercentage) return b.matchPercentage - a.matchPercentage;
                     if (a.totalIngredients !== b.totalIngredients) return a.totalIngredients - b.totalIngredients;
-                    return Math.random() - 0.5; // Randomize recipes with the same match percentage
+                    return Math.random() - 0.5;
                 });
 
                 // Pass the processed data for display
                 displayResults(filteredData, ingredients);
             })
-            .catch(error => console.error("Error loading JSON:", error));
-    }
+            .catch(error => console.error("Error loading JSON:", error))
+            .finally(() => filterButton.disabled = false); // Re-enable button after processing
+    }, 300); // 300ms debounce delay
 
     // Event listener for the filter button
     filterButton.addEventListener("click", handleSearch);
@@ -65,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 // Function to display filtered recipes, including missing ingredients and image
 function displayResults(data, ingredients) {
     const container = document.getElementById("resultsContainer");
@@ -76,21 +87,19 @@ function displayResults(data, ingredients) {
         return;
     }
 
-    const displayedNames = new Set(); // Track displayed recipe names to avoid duplicates
+    const displayedNames = new Set();
 
     data.forEach((item, index) => {
         const recipe = item.recipe;
         const matchPercentage = item.matchPercentage;
         const missingIngredients = item.missingIngredients;
 
-        // Skip if this recipe name has already been displayed
         if (displayedNames.has(recipe.name)) return;
-        displayedNames.add(recipe.name); // Add to set to mark as displayed
+        displayedNames.add(recipe.name);
 
         const article = document.createElement("article");
         article.classList.add("box", "post");
 
-        // Highlight matched ingredients and make each clickable
         const highlightedIngredients = recipe.ingredients.map(ingredient => {
             let highlightedIngredient = ingredient;
             ingredients.forEach(ing => {
@@ -99,16 +108,13 @@ function displayResults(data, ingredients) {
                     highlightedIngredient = highlightedIngredient.replace(regex, `<span class="highlight">$1</span>`);
                 }
             });
-            // Make ingredient clickable
             return `<li><span class="clickable-ingredient" onclick="addIngredientToSearch('${ingredient}')">${highlightedIngredient}</span></li>`;
         }).join("");
 
-        // Show missing ingredients with an "X"
         const missingList = ingredients.filter(ing => !recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(ing)))
             .map(ingredient => `<span class="missing">X ${ingredient}</span>`).join(", ");
 
-        // Preparation steps initially hidden in a container
-        const preparationId = `preparation-${index}`; // Unique ID for each preparation section
+        const preparationId = `preparation-${index}`;
         const preparationContainer = `
             <button onclick="togglePreparation('${preparationId}')">Show Preparation</button>
             <div id="${preparationId}" style="display: none; margin-top: 25px;">
@@ -116,7 +122,6 @@ function displayResults(data, ingredients) {
             </div>
         `;
 
-        // Insert the image directly after the header
         const imageTag = recipe.image ? `<img src="${recipe.image}" alt="${recipe.name}" class="recipe-image mobile-view-image">` : "";
 
         article.innerHTML = `
@@ -126,26 +131,22 @@ function displayResults(data, ingredients) {
             <ul>${highlightedIngredients}</ul>
             <p><strong>Not needed:</strong> ${missingList}</p>
             <p><strong>Matching:</strong> ${matchPercentage.toFixed(2)}%</p>
-            
             ${preparationContainer}
         `;
         container.appendChild(article);
     });
 }
 
-// JavaScript function to add an ingredient to the search bar if it's not already there
 function addIngredientToSearch(ingredient) {
     const filterInput = document.getElementById("filterInput");
     const currentIngredients = filterInput.value.toLowerCase().split(",").map(ing => ing.trim());
 
-    // Add the ingredient if it's not already in the search bar
     if (!currentIngredients.includes(ingredient.toLowerCase())) {
         currentIngredients.push(ingredient);
         filterInput.value = currentIngredients.join(", ");
     }
 }
 
-// JavaScript function to toggle visibility of preparation steps
 function togglePreparation(preparationId) {
     const preparationDiv = document.getElementById(preparationId);
     const isHidden = preparationDiv.style.display === "none";
