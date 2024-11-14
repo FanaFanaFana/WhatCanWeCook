@@ -38,6 +38,35 @@ body {
 }
 
 
+/* Container for ingredients and preparation */
+.ingredients-preparation-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Ingredients section */
+.ingredients-section {
+    flex: 1; /* Takes up available space */
+}
+
+/* Preparation section */
+.preparation-section {
+    flex: 1; /* Takes up available space */
+    text-align: justify; /* Align text properly */
+}
+
+/* Adjust display for smaller screens */
+@media (max-width: 900px) {
+    .ingredients-preparation-container {
+        flex-direction: column; /* Stack ingredients and preparation vertically on small screens */
+    }
+
+    .preparation-section {
+        text-align: left; /* Left-align text on mobile */
+    }
+}
+
 
 
 .full-width {
