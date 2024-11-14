@@ -2056,6 +2056,7 @@ article p strong {
 		background-image: url("/images/bg.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
+		opacity: 0.6;
 	}
 
 		#header > .container {
