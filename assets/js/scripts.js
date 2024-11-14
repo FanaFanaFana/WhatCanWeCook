@@ -56,7 +56,7 @@ function displayResults(data, ingredients) {
     container.innerHTML = "";
 
     if (data.length === 0) {
-        container.innerHTML = "<h1>No recipes found with these ingredients.</h1>";
+        container.innerHTML = "<h1>No recipes found with these ingredients. Make sure to use ',' between ingredients !</h1>";
         return;
     }
 
