@@ -2053,10 +2053,21 @@ article p strong {
 		position: relative;
 		/*background: #fff;*/
 		text-align: center;
+	
+	}
+
+	#header::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 		background-image: url("/images/bg.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
-		opacity: 0.6;
+		opacity: 0.5; /* Adjust this value for desired opacity */
+		z-index: -1; /* Position the pseudo-element behind other content */
 	}
 
 		#header > .container {
