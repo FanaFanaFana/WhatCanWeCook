@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener for the filter button
     document.getElementById("filterButton").addEventListener("click", function () {
         const ingredientsInput = document.getElementById("filterInput").value.toLowerCase().trim();
-        
-        // Check if input is empty; if so, clear the results and stop further processing
-        if (ingredientsInput === "") {
+
+        // Check if input is empty or only contains commas or periods
+        if (ingredientsInput === "" || /^[,.]+$/.test(ingredientsInput)) {
             const container = document.getElementById("resultsContainer");
-            container.innerHTML = "<h1>Please enter ingredients to search for recipes.</h1>";
+            container.innerHTML = "<h1>Please enter valid ingredients to search for recipes.</h1>";
             return;
         }
 
