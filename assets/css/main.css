@@ -39,6 +39,7 @@ body {
 
 
 
+
 .full-width {
     width: 100%;
 }
@@ -63,6 +64,25 @@ body {
 		margin-left: 6px;
     }
 }
+
+#filterInput {
+	padding: 6px !important;  /* Reduce padding to make input field shorter */
+	font-size: 20px !important; /* Reduce font size */
+	line-height: normal !important; /* Remove any inherited line-height that could be increasing height */
+	border-radius: 5px; /* Keep slight rounding */
+	width: 100%; /* Ensure it stays responsive within container */
+	height: 50px !important;
+	box-sizing: border-box; /* Ensures padding doesn’t increase height */
+}
+
+#filterButton {
+	width: 100% !important;
+	font-size: 18px !important;
+	padding: 12px !important; /* Force padding to apply */
+	margin-left: 6px;
+}
+
+
 
 
 
@@ -365,6 +385,8 @@ article p strong {
 			}
 
 		}
+
+		
 
 /* Row */
 
