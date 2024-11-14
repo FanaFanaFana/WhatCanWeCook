@@ -40,10 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Filter out recipes with no matches at all
                 const filteredData = processedData.filter(item => item.matchPercentage > 0);
 
-                // Sort recipes by match percentage (highest first) and then by the number of ingredients (lowest first)
+                // Sort recipes by match percentage (highest first), then by the number of ingredients (lowest first),
+                // and randomize the order of recipes with the same match percentage.
                 filteredData.sort((a, b) => {
                     if (b.matchPercentage !== a.matchPercentage) return b.matchPercentage - a.matchPercentage;
-                    return a.totalIngredients - b.totalIngredients;
+                    if (a.totalIngredients !== b.totalIngredients) return a.totalIngredients - b.totalIngredients;
+                    return Math.random() - 0.5; // Randomize recipes with the same match percentage
                 });
 
                 // Pass the processed data for display
@@ -149,4 +151,3 @@ function togglePreparation(preparationId) {
     const isHidden = preparationDiv.style.display === "none";
     preparationDiv.style.display = isHidden ? "block" : "none";
 }
-
