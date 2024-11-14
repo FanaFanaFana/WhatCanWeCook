@@ -38,6 +38,7 @@ body {
 }
 
 
+
 .full-width {
     width: 100%;
 }
@@ -59,6 +60,7 @@ body {
         width: 100%;
         font-size: 18px !important;
         padding: 12px !important; /* Force padding to apply */
+		margin-left: 6px;
     }
 }
 
