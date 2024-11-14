@@ -88,7 +88,7 @@ function displayResults(data, ingredients) {
         const preparationId = `preparation-${index}`; // Unique ID for each preparation section
         const preparationContainer = `
             <button onclick="togglePreparation('${preparationId}')">Show Preparation</button>
-            <div id="${preparationId}" style="display: none; margin-top: 25px;">
+            <div id="${preparationId}" style="display: none; margin-top: 25px; ">
                 ${recipe.preparation.replace(/\./g, ".<br>").replace(/<br><br>/g, "<br>")}
             </div>
         `;
@@ -102,7 +102,7 @@ function displayResults(data, ingredients) {
             <p><strong>Ingredients:</strong></p>
             <ul>${highlightedIngredients}</ul>
             <p><strong>Not needed:</strong> ${missingList}</p>
-            <p><strong>Match Percentage:</strong> ${matchPercentage.toFixed(2)}%</p>
+            <p><strong>Matching:</strong> ${matchPercentage.toFixed(2)}%</p>
             
             ${preparationContainer}
         `;

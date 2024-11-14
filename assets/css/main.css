@@ -70,6 +70,7 @@ article.post {
     padding-top: 20px;
 	
 	
+	
 }
 
 /* Base styling for desktop */
@@ -88,7 +89,7 @@ article.post {
 }
 
 /* Mobile adjustments */
-@media (max-width: 1800px) {
+@media (max-width: 1800px) {  /* ACTUALLY SMALLER FOR MOBILE DEVICES*/
     .mobile-view-image {
         position: static;
         display: block;
@@ -99,7 +100,7 @@ article.post {
 
     .box.post {
         padding-top: 20px;
-        text-align: center; /* Center-align content for a cleaner mobile look */
+        text-align: left; /* Center-align content for a cleaner mobile look */
 		
     }
 }
@@ -299,7 +300,7 @@ article p strong {
 }
 
 #resultsContainer article {
-    flex: 1 1 calc(50% - 20px); /* Ensure two columns, with space between */
+    flex: 1 1 calc(100% - 20px); /* Ensure four columns, with space between */
     box-sizing: border-box; /* Make sure padding and margin are accounted for */
     padding: 10px;
     border: 1px solid #ddd;
@@ -2048,10 +2049,11 @@ article p strong {
 /* Header */
 
 	#header {
+		
 		position: relative;
-		position: relative;
-		background: #fff;
+		/*background: #fff;*/
 		text-align: center;
+		background-image: url("/images/bg.jpg");
 	}
 
 		#header > .container {
