@@ -103,33 +103,40 @@ article.post {
 
 /* Base styling for desktop */
 .recipe-image {
-    width: 250px;
+    width: 400px;
     height: auto;
     position: absolute;
-    top: 100px;
+    top: 15px;
     right: 15px;
     border-radius: 5px;
 	border: 3px solid white;
-	
-  
-	
-	
+		
 }
 
-/* Mobile adjustments */
-@media (max-width: 1800px) {  /* ACTUALLY SMALLER FOR MOBILE DEVICES*/
-    .mobile-view-image {
+button.show-preparation-btn {
+    display: none;
+}
+
+/* Only show the "Show Preparation" button on screens smaller than 900px */
+@media (max-width: 900px) {
+    button.show-preparation-btn {
+        display: inline-block !important; /* Force display to inline-block on mobile */
+    }
+}
+
+/* Other mobile adjustments for recipe image positioning */
+@media (max-width: 900px) {
+    .recipe-image {
         position: static;
         display: block;
-        margin: 10px auto; /* Center the image */
-        width: 80%; /* Make image more responsive on mobile */
+        margin: 10px auto;
+        width: 80%;
         max-width: 250px;
     }
 
     .box.post {
         padding-top: 20px;
-        text-align: left; /* Center-align content for a cleaner mobile look */
-		
+        text-align: left;
     }
 }
 
